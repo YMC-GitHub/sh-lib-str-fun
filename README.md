@@ -22,6 +22,8 @@ some function for handle str for ymc shell lib
 - [ ] str_substring
 - [ ] str_substr
 - [x] str_trim
+- [x] str_eq
+- [x] str_fill
 
 ```sh
 cat src/index.sh | grep "function " | sed "s/function */- [x] /g"  | sed "s/() *{//g"
