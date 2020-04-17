@@ -1,6 +1,10 @@
 # change log
 
-## v1.0.0
+## desc
+
+based on v1.0.0
+
+## v1.1.0
 
 - [x] str_set
 - [x] str_length
@@ -18,3 +22,9 @@
 - [ ] str_substring
 - [ ] str_substr
 - [x] str_trim
+- [x] str_eq
+- [x] str_fill
+
+## where update
+
+add api str_eq and str_fill
