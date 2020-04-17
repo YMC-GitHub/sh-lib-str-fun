@@ -487,6 +487,48 @@ EOF
   #echo "$shCode"
   eval "$shCode"
 }
+###
+# 名字: str_eq
+# 参数：字符取值,字符取值
+# 返回：true/false
+# 描述：比较字符，字符相等？
+###
+function str_eq() {
+  local a=
+  local b=
+  [ -n "$1" ] && a="$1"
+  [ -n "$2" ] && b="$2"
+
+  if [ "$a" = "$b" ]; then
+    echo "true"
+  else
+    echo "false"
+  fi
+}
+###
+# 名字: str_fill
+# 参数：字符取值,填充长度,填充字符,是否变量
+# 返回：字符
+# 描述：创建字符，填充字符？
+# 注：第四个参数表示第一个参数是字符变量还是字符取值
+###
+function str_fill() {
+  local res=
+  local fill=
+  local max=
+  local IS_VAR=
+  local t= # without this, t is global
+  max=8
+  fill="0"
+  [ -n "$1" ] && res="$1"
+  [ -n "$2" ] && max="$2"
+  [ -n "$3" ] && fill="$3"
+  [ -n "$4" ] && IS_VAR="$4"
+  [ -n "$IS_VAR" ] && eval "res=\$$res" # && echo "$res"
+
+  len=${#res} && while [ "$max" -gt "$len" ] ; do t="$fill$t";max=$[$max-1]; done && echo "$t$res"
+
+}
 
 # file usage
 # ./index.sh

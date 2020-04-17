@@ -78,5 +78,49 @@ str_replace "name" "n" "m" "g"
 echo "test-修改字符-分割："
 str_split "name" "m" "h"
 echo "${h[0]}"
+
+
+echo "测试str_eq："
+echo "传入取值-风格1"
+echo "相等："
+str_eq "a" "a"
+res=$(str_eq "a" "a") && echo "$res"
+echo "不等："
+str_eq "a" "b"
+res=$(str_eq "a" "b") && echo "$res"
+echo "传入取值-风格2"
+echo "相等："
+a=a
+b=a
+str_eq "$a" "$b"
+res=$(str_eq "$a" "$b") && echo "$res"
+echo "不等："
+a=a
+b=b
+str_eq "$a" "$b"
+res=$(str_eq "$a" "$b") && echo "$res"
+
+
+echo "测试str_fill："
+echo "传入取值-风格01"
+str_fill "x" "5" ""
+str_fill "x" "5" "-"
+str_fill "x" "5" " "
+echo "传入取值-风格02"
+res=$(str_fill "x" "5") && echo "$res"
+res=$(str_fill "x" "5" "-") && echo "$res"
+res=$(str_fill "x" "5" " ") && echo "$res"
+echo "传入变量-风格01"
+xxx=8 && str_fill "xxx" "5" "" "IS_VAR" #ok
+xxx=8 && str_fill "xxx" "5" "-" "IS_VAR" #ok
+xxx=8 && str_fill "xxx" "5" " " "IS_VAR" #ok
+echo "传入变量-风格02"
+xxx=8 && res=$(str_fill "xxx" "5" "" "IS_VAR") && echo "$res";
+xxx=8 && res=$(str_fill "xxx" "5" "-" "IS_VAR") && echo "$res";
+xxx=8 && res=$(str_fill "xxx" "5" " " "IS_VAR") && echo "$res";
+#xxx=c && (str_fill "xxx" "5" "" "IS_VAR")
+#echo $?
+xxx=010 && (str_fill "xxx" "" "" "IS_VAR")
+
 ## file-usage
 # ./src/test.sh
